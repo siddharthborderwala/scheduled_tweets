@@ -68,9 +68,11 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
+    buftok (0.2.0)
     builder (3.2.4)
     capybara (3.36.0)
       addressable
@@ -88,9 +90,29 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.2.7)
     digest (3.1.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
     erubi (1.10.0)
+    ffi (1.15.5)
+    ffi (1.15.5-x64-mingw32)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashie (5.0.0)
+    http (4.4.1)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
+    http_parser.rb (0.6.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.0.1)
@@ -110,10 +132,14 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
     matrix (0.4.2)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.2)
+    multipart-post (2.1.1)
+    naught (1.1.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -130,13 +156,31 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.0-x64-mingw32)
+      racc (~> 1.4)
     nokogiri (1.13.0-x86_64-linux)
       racc (~> 1.4)
+    oauth (0.5.8)
+    omniauth (2.0.4)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+      rack-protection
+    omniauth-oauth (1.2.0)
+      oauth
+      omniauth (>= 1.0, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.1)
@@ -175,6 +219,7 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    simple_oauth (0.3.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -187,12 +232,30 @@ GEM
       railties (>= 6.0.0)
     strscan (3.0.1)
     thor (1.2.1)
+    thread_safe (0.3.6)
     timeout (0.2.0)
     turbo-rails (1.0.0)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    twitter (7.0.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.11)
+      http (~> 4.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2021.5)
+      tzinfo (>= 1.0.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8)
+    unf_ext (0.0.8-x64-mingw32)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -210,14 +273,18 @@ GEM
     zeitwerk (2.5.3)
 
 PLATFORMS
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   capybara
   debug
   importmap-rails
   jbuilder
+  omniauth-rails_csrf_protection (~> 1.0)
+  omniauth-twitter (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.1)
   selenium-webdriver
@@ -225,6 +292,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
+  twitter (~> 7.0)
   tzinfo-data
   web-console
   webdrivers

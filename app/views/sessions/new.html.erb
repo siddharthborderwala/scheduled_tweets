@@ -1,0 +1,16 @@
+<h1>Sign In</h1>
+
+<%= form_with url: signin_path, method: :post do |form| %>
+  <div class="mb-3">
+    <%= form.label :email%>
+    <%= form.email_field :email, class: "form-control", placeholder: "johndoe@example.com" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+  </div>
+  <%= link_to "Forgot your password?", password_forgot_path %>
+  <div>
+    <%= form.submit "Sign In", class: "btn btn-primary mt-4" %>
+  </div>
+<% end %>
